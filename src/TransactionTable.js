@@ -1,11 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const TransactionTable = ({
-  transactions,
-  sortByCategory,
-  sortByDescription,
-  deleteTransaction,
-}) => {
+const TransactionTable = ({ transactions, sortByCategory, sortByDescription, deleteTransaction }) => {
+  if (!transactions) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <table>
       <thead>
@@ -23,9 +22,7 @@ const TransactionTable = ({
             <td>{transaction.description}</td>
             <td>{transaction.amount}</td>
             <td>
-              <button onClick={() => deleteTransaction(transaction.id)}>
-                Delete
-              </button>
+              <button onClick={() => deleteTransaction(transaction.id)}>Delete</button>
             </td>
           </tr>
         ))}
